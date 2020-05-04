@@ -163,7 +163,6 @@ celtic_wins <- replicate(B, {
   "win" %in% simulated_games
 })
 
-
 # Calculate the frequency out of B iterations that the Celtics won at least one game. Print your answer to the console.
 mean(celtic_wins)
 
