@@ -18,7 +18,8 @@ runners <- c("Jamaica", "Jamaica", "Jamaica", "USA", "Ecuador", "Netherlands", "
 medals <- c("Gold","Silver","Bronze")
 
 B <- 10000
+
 results <- replicate(B, {
   winners <- sample(runners, 3)
 })
-winners
+results
