@@ -23,3 +23,7 @@ results <- replicate(B, {
   winners <- sample(runners, 3)
 })
 results
+
+
+
+("Jamaica" "Jamaica" "Jamaica") %in% results
