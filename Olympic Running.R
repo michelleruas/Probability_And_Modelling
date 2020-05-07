@@ -24,6 +24,4 @@ results <- replicate(B, {
 })
 results
 
-
-
 ("Jamaica" "Jamaica" "Jamaica") %in% results
