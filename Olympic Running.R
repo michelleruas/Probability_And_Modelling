@@ -17,11 +17,18 @@ mean(coms)
 runners <- c("Jamaica", "Jamaica", "Jamaica", "USA", "Ecuador", "Netherlands", "France", "South Africa")
 medals <- c("Gold","Silver","Bronze")
 
-B <- 10000
+perms <- permutations(8,3)
+coms <- combinations(8,3)
+coms
+str(coms)
+str(perms)
+1/56
+
+B <- 10
 
 results <- replicate(B, {
   winners <- sample(runners, 3)
 })
 results
 
-("Jamaica" "Jamaica" "Jamaica") %in% results
+
