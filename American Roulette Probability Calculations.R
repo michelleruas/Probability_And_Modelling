@@ -165,6 +165,48 @@ Y
 # Compute the standard error of 'Y', the mean outcome per bet from 10,000 bets.
 (abs(17 - - 1) * sqrt(p_green*p_not_green))/ sqrt(10000)
 
+# Compute the standard error of 'Y', the mean outcome per bet from 10,000 bets.
+(abs(17 - - 1) * sqrt(p_green*p_not_green))/ sqrt(10000)
+
+# We defined the average using the following code
+avg <- 17*p_green + -1*p_not_green
+
+# We defined standard error using this equation
+se <- 1/sqrt(n) * (17 - -1)*sqrt(p_green*p_not_green)
+
+# Given this average and standard error, determine the probability of winning more than $0. Print the result to the console.
+1-pnorm(0,avg,se)
+
+## Make sure you fully follow instructions, including printing values to the console and correctly running the `replicate` loop. If not, you may encounter "Session Expired" errors.
+
+# The variable `n` specifies the number of independent bets on green
+n <- 10000
+
+# The variable `B` specifies the number of times we want the simulation to run
+B <- 10000
+
+# Use the `set.seed` function to make sure your answer matches the expected result after random number generation
+set.seed(1)
+
+# Generate a vector `S` that contains the the average outcomes of 10,000 bets modeled 10,000 times
+S <- replicate(B, {
+  R <- sample(c(17,-1), n, replace = TRUE, prob = c(2/38, 36/38))
+  mean(R)
+})
+
+# Compute the average of `S`
+mean(S)
+
+# Compute the standard deviation of `S`
+sd(S)
+
+# Compute the proportion of outcomes in the vector 'S' where you won more than $0
+mean(S>0)
+
+
+
+
+
 
 
 
