@@ -108,6 +108,65 @@ se <- sqrt(n) * (17 - -1)*sqrt(p_green*p_not_green)
 1-pnorm(0, avg, se)
 
 
+# Assign a variable `p_green` as the probability of the ball landing in a green pocket
+p_green <- 2 / 38
+
+# Assign a variable `p_not_green` as the probability of the ball not landing in a green pocket
+p_not_green <- 1-p_green
+
+# Define the number of bets using the variable 'n'
+n <- 100
+
+# The variable `B` specifies the number of times we want the simulation to run. Let's run the Monte Carlo simulation 10,000 times.
+B <- 10000
+
+# Use the `set.seed` function to make sure your answer matches the expected result after random sampling.
+set.seed(1)
+
+# Create an object called `S` that replicates the sample code for `B` iterations and sums the outcomes.
+S <- replicate(B, {
+  R <- sample(c(17,-1), n, replace = TRUE, prob = c(2/38, 36/38))
+  sum(R)
+}) 
+
+# Compute the average value for 'S'
+mean(S)
+
+# Calculate the standard deviation of 'S'
+sd(S)
+
+
+# Calculate the proportion of outcomes in the vector `S` that exceed $0
+mean(S>0)
+
+
+# Use the `set.seed` function to make sure your answer matches the expected result after random sampling.
+set.seed(1)
+
+# Define the number of bets using the variable 'n'
+n <- 10000
+
+# Assign a variable `p_green` as the probability of the ball landing in a green pocket
+p_green <- 2 / 38
+
+# Assign a variable `p_not_green` as the probability of the ball not landing in a green pocket
+p_not_green <- 1 - p_green
+
+# Create a vector called `X` that contains the outcomes of `n` bets
+X <- sample(c(17, -1), n, replace = TRUE, prob = c(2/38, 36/38))
+
+# Define a variable `Y` that contains the mean outcome per bet. Print this mean to the console.
+Y <- mean(X)
+Y
+
+# Calculate the expected outcome of `Y`, the mean outcome per bet in 10,000 bets
+(-1*p_not_green + 17*p_green)
+
+# Compute the standard error of 'Y', the mean outcome per bet from 10,000 bets.
+(abs(17 - - 1) * sqrt(p_green*p_not_green))/ sqrt(10000)
+
+
+
 
 
 
