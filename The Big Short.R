@@ -74,6 +74,92 @@ mean(profit)    # expected profit
 mean(profit < 0)    # probability of losing money
 mean(profit < -10000000)    # probability of losing over $10 million
 
+# Assign the number of loans to the variable `n`
+n <- 10000
+
+# Assign the loss per foreclosure to the variable `loss_per_foreclosure`
+loss_per_foreclosure <- -200000
+
+# Assign the probability of default to the variable `p_default`
+p_default <- 0.03
+p_pay <- 1 - p_default
+
+# Use the `set.seed` function to make sure your answer matches the expected result after random sampling
+set.seed(1)
+
+# Generate a vector called `defaults` that contains the default outcomes of `n` loans
+defaults <-  sample(c(0,1),n, prob=c(p_pay,p_default), replace = TRUE)
+
+# Generate `S`, the total amount of money lost across all foreclosures. Print the value to the console.
+sum(defaults)*loss_per_foreclosure
+
+# Assign the number of loans to the variable `n`
+n <- 10000
+
+# Assign the loss per foreclosure to the variable `loss_per_foreclosure`
+loss_per_foreclosure <- -200000
+
+# Assign the probability of default to the variable `p_default`
+p_default <- 0.03
+
+# Use the `set.seed` function to make sure your answer matches the expected result after random sampling
+set.seed(1)
+
+# The variable `B` specifies the number of times we want the simulation to run
+B <- 10000
+
+# Generate a list of summed losses 'S'. Replicate the code from the previous exercise over 'B' iterations to generate a list of summed losses for 'n' loans.  Ignore any warnings for now.
+
+S <- replicate(B, {
+  draws <- sample( c(0,1), n, 
+                   prob=c(1-p_default, p_default), replace = TRUE) 
+  sum(draws)*loss_per_foreclosure
+})
+
+# Plot a histogram of 'S'.  Ignore any warnings for now.
+hist(S)
+
+# Assign the number of loans to the variable `n`
+n <- 10000
+
+# Assign the loss per foreclosure to the variable `loss_per_foreclosure`
+loss_per_foreclosure <- -200000
+
+# Assign the probability of default to the variable `p_default`
+p_default <- 0.03
+
+# Calculate the expected loss due to default out of 10,000 loans
+(0.03*loss_per_foreclosure)*n
+
+
+# Assign the number of loans to the variable `n`
+n <- 10000
+
+# Assign the loss per foreclosure to the variable `loss_per_foreclosure`
+loss_per_foreclosure <- -200000
+
+# Assign the probability of default to the variable `p_default`
+p_default <- 0.03
+
+# Compute the standard error of the sum of 10,000 loans
+1/sqrt(n) * abs(loss_per_foreclosure)*sqrt(p_default*(1-p_default))*n
+
+
+# Assign the loss per foreclosure to the variable `loss_per_foreclosure`
+loss_per_foreclosure <- -200000
+
+# Assign the probability of default to the variable `p_default`
+p_default <- 0.03
+
+# Assign a variable `x` as the total amount necessary to have an expected outcome of $0 
+x <- -(loss_per_foreclosure*p_default) / (1 - p_default)
+
+# Convert `x` to an interest rate, given that the loan amount is $180,000. Print this value to the console.
+x / 180000
+
+
+
+
 
 
 
